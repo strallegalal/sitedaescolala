@@ -1,0 +1,529 @@
+/* ARQUIVO DE ESTILO: cores, fontes e visual do site (mesma pasta do index.html) */
+
+/* CORES DO SITE (modo claro): bg=fundo, surface=superfície, text=texto, muted=texto suave, accent=cor de destaque, border=bordas */
+:root {
+  --bg: #faf7f2;
+  --surface: #fff;
+  --text: #2b2622;
+  --muted: #6f655c;
+  --accent: #8c2f4a;
+  --accent-text: #fff;
+  --border: #e8e0d5;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* MODO ESCURO: cores para aparelhos no modo escuro */
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1a1714;
+    --surface: #25211d;
+    --text: #f2ece4;
+    --muted: #a89d92;
+    --accent: #e58aa5;
+    --accent-text: #1a1714;
+    --border: #3a342e;
+  }
+}
+
+/* MODO ESCURO: cores do tema escuro manual */
+:root[data-theme="dark"] {
+  --bg: #1a1714;
+  --surface: #25211d;
+  --text: #f2ece4;
+  --muted: #a89d92;
+  --accent: #e58aa5;
+  --accent-text: #1a1714;
+  --border: #3a342e;
+}
+
+/* Rolagem: margem de ancoragem do topo fixo */
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+/* Regra geral de tamanho (box-sizing) */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilo geral da página */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+}
+
+/* Títulos: fonte serifada */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: .3px;
+}
+
+/* Menu, botões e preços: fonte sem serifa */
+nav, button, .price, .btn {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Links */
+a {
+  color: inherit;
+}
+
+/* Topo fixo */
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  z-index: 5;
+}
+
+/* Barra do topo */
+.bar {
+  max-width: 1000px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Logo */
+.logo {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* Menu */
+nav {
+  display: flex;
+  gap: 28px;
+  font-size: .78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Links do menu */
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: color .2s;
+}
+
+/* Link do menu (hover) */
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Botão do carrinho */
+.cart {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 0;
+  padding: 8px 18px;
+  font-size: .72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+/* Botão do carrinho (hover) */
+.cart:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Seções (largura máxima de 1000px) */
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 56px 20px;
+}
+
+/* Seção de destaque */
+.hero {
+  text-align: center;
+  padding: 110px 20px 90px;
+  max-width: none;
+  background: linear-gradient(180deg, var(--surface), var(--bg));
+}
+
+/* Título do destaque */
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+
+/* Texto de apoio do destaque */
+.hero p {
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 24px;
+  font-size: 1.1rem;
+}
+
+/* Botão principal */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-text);
+  padding: 14px 34px;
+  border-radius: 0;
+  text-decoration: none;
+  font-size: .78rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: opacity .2s, transform .2s;
+}
+
+/* Botão principal (hover) */
+.btn:hover {
+  opacity: .88;
+  transform: translateY(-1px);
+}
+
+/* Títulos das seções */
+h2 {
+  font-size: 2rem;
+  margin: 0 0 36px;
+  text-align: center;
+}
+
+/* Grade dos produtos */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 20px;
+}
+
+/* Card do produto */
+.card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Área da foto do produto (proporção 3 por 4) */
+.img {
+  position: relative;
+  aspect-ratio: 3/4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+/* Corte da área da foto */
+.img {
+  overflow: hidden;
+}
+
+/* Foto do produto */
+.img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s;
+}
+
+/* Foto do produto (hover) */
+.card:hover .img img {
+  transform: scale(1.04);
+}
+
+/* Desenho de reserva (SVG) do produto sem foto */
+.img svg {
+  width: 110px;
+  height: 110px;
+}
+
+/* Área de informações do produto */
+.info {
+  padding: 16px 2px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Nome do produto */
+.info h3 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+/* Descrição do produto */
+.info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+/* Preço do produto */
+.price {
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--accent);
+}
+
+/* Botão Adicionar */
+.card button {
+  margin-top: auto;
+  border: 1px solid var(--text);
+  background: transparent;
+  color: var(--text);
+  border-radius: 0;
+  padding: 11px;
+  font-size: .72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+/* Botão Adicionar (hover) */
+.card button:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* Seção Sobre */
+.about {
+  text-align: center;
+  max-width: 640px;
+  font-size: 1.1rem;
+}
+
+/* Seção Contato */
+.contact {
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+/* Rodapé */
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+  letter-spacing: 1px;
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
+}
+
+/* CELULAR: regras para telas pequenas */
+@media (max-width:560px) {
+  nav {
+    display: none;
+  }
+}
+
+/* CARRINHO: fundo escurecido */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 20;
+}
+
+.overlay.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Painel lateral do carrinho */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(400px, 100%);
+  background: var(--bg);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform .3s;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.drawer.on {
+  transform: none;
+}
+
+/* Cabeçalho do painel */
+.dhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dhead h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.dhead button {
+  background: none;
+  border: 0;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Lista de itens do carrinho */
+.itens {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 20px;
+}
+
+.vazio {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Item do carrinho */
+.item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.item img, .item .mini {
+  width: 56px;
+  height: 70px;
+  object-fit: cover;
+  flex: none;
+}
+
+.item .mini {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item .mini svg {
+  width: 36px;
+  height: 36px;
+}
+
+.item .nm {
+  flex: 1;
+  font-size: .95rem;
+}
+
+.item .nm b {
+  display: block;
+  font-weight: 400;
+}
+
+.item .nm span {
+  color: var(--accent);
+}
+
+/* Botões de quantidade (menos e mais) */
+.qtd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.qtd button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.rm {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .8rem;
+  text-decoration: underline;
+}
+
+/* Rodapé do painel (total e botão finalizar) */
+.dfoot {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+
+.dfoot .btn {
+  text-align: center;
+}
+
+.btn.off {
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* MODO ESCURO: grupo dos botões do topo (tema e carrinho) */
+.acoes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Botão de tema (claro ou escuro) */
+.tema {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: all .2s;
+}
+
+.tema:hover {
+  background: var(--text);
+  color: var(--bg);
+}
